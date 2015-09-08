@@ -1,13 +1,16 @@
+# Extensions - Fab Lab Sud31-Val d'Ariège edition
+
+Theses extensions come from oni305 (https://hackaday.io/oni305) and are adapted to the our lab's equipment.
+
 # Various Inkscape extensions
 
- - Raster 2 Laser GCode generator
- - 
+ - Raster 2 Laser GCode generator - Mr Beam (http://mr-beam.org/) + Fab Lab Sud31-Val d'Ariège (https://www.fablab-sud31.fr/) flavor
  
-#Descriptions
+# Descriptions
 - Raster 2 Laser GCode generator is an extension to generate Gcode for a laser cutter/engraver (or pen plotter), it can generate various type of outputs from a simple B&W (on/off) to a more detailed Grayscale (pwm)
 
 
-#Installing:
+# Installing:
 
 Simply copy all the files in the folder "Extensions" of Inkscape
 
@@ -26,7 +29,7 @@ for unix (& mac maybe) change the permission on the file:
 
 
 
-#Usage of "Raster 2 Laser GCode generator":
+# Usage of "Raster 2 Laser GCode generator":
 
 [Required file: png.py / raster2laser_gcode.inx / raster2laser_gcode.py]
 
@@ -39,7 +42,5 @@ for unix (& mac maybe) change the permission on the file:
 - Step 4) Play!
 
 
-
-
-#Note
+# Note
 I have created all the file except for png.py , see that file for details on the license
