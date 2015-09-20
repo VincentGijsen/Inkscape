@@ -68,6 +68,13 @@
 		<_item value="32">8</_item>  <!-- 256/32 -->
 	</param>
 
+	<!-- Lowest Power Level -->
+
+	<param name="laserpower_LOW" type="int" min="0" max="1000" gui-text="Lowest Power Level">1</param>
+
+	<!-- Lowest Power Level -->
+	<!-- depends on sparam, grbl can hav max(255), or max(1000) -->
+	<param name="laserpower_HIGH" type="int" min="0" max="1000" gui-text="Highest Power Level">255</param>
 
 	<!-- Velocità Nero e spostamento -->
 	<param name="speed_ON" type="int" min="1" max="5000" gui-text="Engraving speed">200</param>

@@ -63,6 +63,10 @@ class GcodeExport(inkex.Effect):
 		self.OptionParser.add_option("","--BW_threshold",action="store", type="int", dest="BW_threshold", default="128",help="")
 		self.OptionParser.add_option("","--grayscale_resolution",action="store", type="int", dest="grayscale_resolution", default="1",help="")
 
+		#Lowest burning setting
+		self.OptionParser.add_option("","--laserpower_LOW", action="store", type="int", dest="laserpower_LOW", default="1", help="Lowest laser point (e.g. when wood starts to go brown)")
+		#Highest burning setting
+		self.OptionParser.add_option("", "--laserpower_HIGH", action="store", type="int", dest="laserpower_HIGH", default="1000", help="Highest laser power setting")
 		#Velocita Nero e spostamento
 		self.OptionParser.add_option("","--speed_ON",action="store", type="int", dest="speed_ON", default="200",help="")
 
@@ -396,8 +400,8 @@ class GcodeExport(inkex.Effect):
 							matrice_BN[y][x] == 255
 
 						if matrice[y][x] > 1 and matrice[y][x] <254:
+							##Scale the value to the proper proportion given the greyscale
 							matrice_BN[y][x] = ( matrice[y][x] // self.options.grayscale_resolution ) * self.options.grayscale_resolution
-
 
 
 		####Ora matrice_BN contiene l'immagine in Bianco (255) e Nero (0)
@@ -491,7 +495,10 @@ class GcodeExport(inkex.Effect):
 							if matrice_BN[y][x] != B :
 								if Laser_ON == False :
 									file_gcode.write('G00 X' + str(float(x)/Scala) + ' Y' + str(float(y)/Scala) +'\n')
-									file_gcode.write(self.options.laseron + ' '+ ' S' + str(255 - matrice_BN[y][x]) +' ; Laser ON\n')
+									##scale the "Color to be burned to the appropriate laser output"
+									currentLaserPower = ((self.options.laserpower_HIGH - self.options.laserpower_LOW) *  ((255 - matrice_BN[y][x]) - 0) // (255 - 0)) + self.options.laserpower_LOW
+
+									file_gcode.write(self.options.laseron + ' '+ ' S' + str(currentLaserPower) +' ; Laser ON\n')
 									Laser_ON = True
 
 								if  Laser_ON == True :   #DEVO evitare di uscire dalla matrice
@@ -508,7 +515,10 @@ class GcodeExport(inkex.Effect):
 
 										elif matrice_BN[y][x] != matrice_BN[y][x+1] :
 											file_gcode.write('G01 X' + str(float(x+1)/Scala) + ' Y' + str(float(y)/Scala) +'\n')
-											file_gcode.write(self.options.laseron + ' '+ ' S' + str(255 - matrice_BN[y][x+1]) +' ; Change Laser power\n')
+											##scale the "Color to be burned to the appropriate laser output"
+											newLaserPower = ((self.options.laserpower_HIGH - self.options.laserpower_LOW) *  ((255 - matrice_BN[y][x+1]) - 0) // (255 - 0)) + self.options.laserpower_LOW
+
+											file_gcode.write(self.options.laseron + ' '+ ' S' + str(newLaserPower) +' ; Change Laser power\n')
 
 
 					else:
@@ -516,7 +526,10 @@ class GcodeExport(inkex.Effect):
 							if matrice_BN[y][x] != B :
 								if Laser_ON == False :
 									file_gcode.write('G00 X' + str(float(x+1)/Scala) + ' Y' + str(float(y)/Scala) +'\n')
-									file_gcode.write(self.options.laseron + ' '+ ' S' + str(255 - matrice_BN[y][x]) +' ; Laser ON\n')
+									##scale the "Color to be burned to the appropriate laser output"
+									currentLaserPower = ((self.options.laserpower_HIGH - self.options.laserpower_LOW) *  ((255 - matrice_BN[y][x]) - 0) // (255 - 0)) + self.options.laserpower_LOW
+
+									file_gcode.write(self.options.laseron + ' '+ ' S' + str(currentLaserPower) +' ; Laser ON\n')
 									Laser_ON = True
 
 								if  Laser_ON == True :   #DEVO evitare di uscire dalla matrice
@@ -533,7 +546,10 @@ class GcodeExport(inkex.Effect):
 
 										elif  matrice_BN[y][x] != matrice_BN[y][x-1] :
 											file_gcode.write('G01 X' + str(float(x)/Scala) + ' Y' + str(float(y)/Scala) +'\n')
-											file_gcode.write(self.options.laseron + ' '+ ' S' + str(255 - matrice_BN[y][x-1]) +' ; Change Laser power\n')
+											##scale the "Color to be burned to the appropriate laser output"
+											newLaserPower = ((self.options.laserpower_HIGH - self.options.laserpower_LOW) *  ((255 - matrice_BN[y][x-1]) - 0) // (255 - 0)) + self.options.laserpower_LOW
+
+											file_gcode.write(self.options.laseron + ' '+ ' S' + str(newLaserPower) +' ; Change Laser power\n')
 
 
 
