@@ -47,6 +47,6 @@ I have created all the file except for png.py , see that file for details on the
 
 ##Laser power
 With the laser-power is meant the power this actually drives the diode.
-e.g. my laser doen't burn my wood ad power of 1, but starting at a power of 20, this ensures you can transpose the levels of grayscale to wood *given* the levels of grayscale are < range of laserpower_Max - laserpower-Min
+e.g. my laser doen't burn my wood ad power of 1, but starting at a power of 20, this ensures you can transpose the levels of grayscale to wood *given* (the levels of grayscale)  > laserpower_Max - laserpower-Min
 
 future work may implement non-linear scaling ?
