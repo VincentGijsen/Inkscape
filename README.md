@@ -5,7 +5,7 @@ Theses extensions come from oni305 (https://hackaday.io/oni305) and are adapted 
 # Various Inkscape extensions
 
  - Raster 2 Laser GCode generator - Mr Beam (http://mr-beam.org/) + Fab Lab Sud31-Val d'Ariège (https://www.fablab-sud31.fr/) flavor
- 
+
 # Descriptions
 - Raster 2 Laser GCode generator is an extension to generate Gcode for a laser cutter/engraver (or pen plotter), it can generate various type of outputs from a simple B&W (on/off) to a more detailed Grayscale (pwm)
 
@@ -44,3 +44,9 @@ for unix (& mac maybe) change the permission on the file:
 
 # Note
 I have created all the file except for png.py , see that file for details on the license
+
+##Laser power
+With the laser-power is meant the power this actually drives the diode.
+e.g. my laser doen't burn my wood ad power of 1, but starting at a power of 20, this ensures you can transpose the levels of grayscale to wood *given* the levels of grayscale are < range of laserpower_Max - laserpower-Min
+
+future work may implement non-linear scaling ?
