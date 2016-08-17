@@ -1,3 +1,12 @@
+## Modification to work with JTEG firmware
+
+made some changes to the gcode redered in order to work with gcode parser in jteg's modified grbl
+
+
+All credits to original author!
+
+
+
 # Extensions - Fab Lab Sud31-Val d'Ariège edition
 
 Theses extensions come from oni305 (https://hackaday.io/oni305) and are adapted to the our lab's equipment.
